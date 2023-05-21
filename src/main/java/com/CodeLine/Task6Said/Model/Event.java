@@ -20,16 +20,16 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     Long id;
 
-    private String name;
+     String name;
 
-    private String sport;
+     String sport;
 
-    private Date startDate;
+     Date startDate;
 
-    private Date endDate;
+     Date endDate;
 
-    private List<Athlete> athletes;
+     List<Athlete> athletes;
 
 }

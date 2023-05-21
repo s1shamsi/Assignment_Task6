@@ -19,15 +19,15 @@ public class Athlete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     Long id;
 
-    private String name;
+     String name;
 
-    private String nationality;
+     String nationality;
 
-    private String sport;
+     String sport;
 
-    private List<Event> events;
+     List<Event> events;
 
 }
 

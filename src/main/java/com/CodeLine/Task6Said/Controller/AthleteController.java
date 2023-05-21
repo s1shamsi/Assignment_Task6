@@ -16,9 +16,10 @@ public class AthleteController {
     private AthleteRepository athleteRepository;
 
     @GetMapping("/athletes")
-    public List<Athlete> getAllAthletes() {
-        return (List<Athlete>) athleteRepository.findAll();
+    public Iterable<Athlete> getAllAthletes() {
+        return athleteRepository.findAll();
     }
+
 
     @GetMapping("/athletes/{id}")
     public Athlete getAthleteById(@PathVariable Long id) {
