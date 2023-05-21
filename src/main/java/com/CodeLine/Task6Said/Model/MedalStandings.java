@@ -8,11 +8,14 @@ import org.hibernate.annotations.Entity;
 @Entity
 @Getter
 @Setter
-@Data
-public class Medal {
 
-     Long id;
-     Long athleteId;
-     Long eventId;
-     String medalType;
+
+@Data
+public class MedalStandings {
+
+     private String country;
+     private Integer goldMedals;
+     private Integer silverMedals;
+     private Integer bronzeMedals;
+
 }

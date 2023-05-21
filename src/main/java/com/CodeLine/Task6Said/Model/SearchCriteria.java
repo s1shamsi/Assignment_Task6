@@ -13,10 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 @Data
+public class SearchCriteria {
 
-public class Search {
-     Long id;
-     String query;
-     List<SearchResult> results;
+     private String name;
+     private String sport;
+     private String country;
 
 }
+
