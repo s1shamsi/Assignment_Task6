@@ -2,37 +2,54 @@ package com.CodeLine.Task6Said.Controller;
 
 import com.CodeLine.Task6Said.Model.Event;
 import com.CodeLine.Task6Said.Repositry.EventRepository;
+import com.CodeLine.Task6Said.Service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
+
 
 @RestController
 public class EventController {
+
     @Autowired
-    private EventRepository eventRepository;
-
-    @GetMapping("/events")
-    public Iterable<Event> getAllEvents() {
-        return eventRepository.findAll();
+    EventService eventsService;
+    @RequestMapping("events/create")
+    public void saveevents() {
+        createevents();
     }
 
-    @GetMapping("/events/{id}")
-    public Event getEventById(@PathVariable Long id) {
-        return eventRepository.findById(id).orElse(null);
+    private void createevents() {
+        Event events = new Event();
+        events.setEventName("olympic");
+        events.setSchedule(new Date());
+        events.setResults("win");
+        events.setSport("run");
+        eventsService.saveevents(events);
+    }
+    @RequestMapping ("events/get")
+    public List<Event> getEvents(){
+        return eventsService.getevents();
     }
 
-    @GetMapping("/events/sport/{sport}")
-    public List<Event> getEventsBySport(@PathVariable String sport) {
-        return eventRepository.findBySport(sport);
+    @RequestMapping(value = "events/get/{events}", method = RequestMethod.GET)
+    public List<Event> getEvents(@RequestParam(value = "events", required = false) String events ) {
+        if (events != null) {
+
+            return eventsService.getByeventsname(events);
+        } else {
+
+            return eventsService.getevents();
+        }
     }
 
-    @GetMapping("/events/daterange/{startDate}/{endDate}")
-    public List<Event> getEventsByDateRange(@PathVariable Date startDate, @PathVariable Date endDate) {
-        return eventRepository.findByStartDateBetween(startDate, endDate);
+    @RequestMapping(value = "events/search", method = RequestMethod.GET)
+    public List<Event> searchEvents(
+            @RequestParam(value = "eventName", required = false) String eventName,
+            @RequestParam(value = "sport", required = false) String sport) {
+
+        return eventsService.searchEvents(eventName, sport);
     }
 
 }

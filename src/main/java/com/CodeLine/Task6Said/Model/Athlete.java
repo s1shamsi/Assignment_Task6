@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Entity;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,18 +14,21 @@ import java.util.List;
 @Setter
 @Data
 public class Athlete {
-
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     Long id;
+    private Long id;
 
-     String name;
+    private String name;
+    private String nationality;
+    private String sport;
+    @JoinColumn(name = "Athletes_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Athlete athletes;
 
-     String nationality;
 
-     String sport;
 
-     List<Event> events;
+
 
 }
 

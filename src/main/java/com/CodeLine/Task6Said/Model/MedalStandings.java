@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Entity
 @Getter
 @Setter
@@ -13,9 +17,14 @@ import org.hibernate.annotations.Entity;
 @Data
 public class MedalStandings {
 
-     private String country;
-     private Integer goldMedals;
-     private Integer silverMedals;
-     private Integer bronzeMedals;
+     @Id
+
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Long id;
+     private String countryName;
+     private int goldMedals;
+     private int silverMedals;
+     private int bronzeMedals;
+
 
 }

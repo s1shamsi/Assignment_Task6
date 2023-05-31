@@ -9,6 +9,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MedalStandingsRepository extends CrudRepository<MedalStandings, Long> {
-
-}
+public interface MedalStandingsRepository  extends JpaRepository<MedalStandings, Long> {
+        }
