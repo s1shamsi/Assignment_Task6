@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Data
-public class Event {
+public class Event extends BaseEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
