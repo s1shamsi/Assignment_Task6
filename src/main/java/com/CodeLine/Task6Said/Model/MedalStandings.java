@@ -15,7 +15,7 @@ import javax.persistence.Id;
 
 
 @Data
-public class MedalStandings {
+public class MedalStandings extends BaseEntity {
 
      @Id
 
