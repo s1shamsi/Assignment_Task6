@@ -23,10 +23,5 @@ public class Athlete extends BaseEntity {
     @JoinColumn(name = "Athletes_id", referencedColumnName = "id")
     @OneToOne(cascade = CascadeType.ALL)
     private Athlete athletes;
-
-
-
-
-
 }
 
