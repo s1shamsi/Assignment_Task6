@@ -15,10 +15,8 @@ import java.util.List;
 @Data
 public class Athlete extends BaseEntity {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String nationality;
     private String sport;
