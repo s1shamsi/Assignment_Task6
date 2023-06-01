@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Data
-public class Athlete {
+public class Athlete extends BaseEntity {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
